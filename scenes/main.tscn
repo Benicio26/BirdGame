@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://35flaur14wdf"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_ip71h"]
+[ext_resource type="Texture2D" uid="uid://4s7g302nq6df" path="res://assets/hdris/Misty Pines HDRI 4K.exr" id="1_x73ba"]
+[ext_resource type="PackedScene" uid="uid://y81aqq14n0ee" path="res://scenes/player.tscn" id="2_xsphm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iakye"]
+albedo_color = Color(0.0488, 0.07532, 0.08, 1)
+
+[sub_resource type="GDScript" id="GDScript_6axlm"]
+script/source = "extends StaticBody3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xfw6"]
+size = Vector3(0.41, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8cscp"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l2332"]
+panorama = ExtResource("1_x73ba")
+
+[sub_resource type="Sky" id="Sky_gagup"]
+sky_material = SubResource("PanoramaSkyMaterial_l2332")
+
+[sub_resource type="Environment" id="Environment_oxcy3"]
+background_mode = 2
+sky = SubResource("Sky_gagup")
+ambient_light_sky_contribution = 0.33
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[node name="main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0074755, 0.220538)
+script = ExtResource("1_ip71h")
+
+[node name="stage" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1.6, 0, 0, 0, 1, 0, 0, 0, 2, -0.249219, 0, 0)
+size = Vector3(39.7, 0.1, 31.5)
+material = SubResource("StandardMaterial3D_iakye")
+
+[node name="wall" type="CSGBox3D" parent="stage"]
+transform = Transform3D(-5.28908e-08, 0, 1.21, 0, 3.751, 0, -1.21, 0, -5.28908e-08, -5.0735, 1.20051, -0.595999)
+size = Vector3(7.6, 1.9, 0.2)
+material = SubResource("StandardMaterial3D_iakye")
+
+[node name="wall4" type="CSGBox3D" parent="stage"]
+transform = Transform3D(-5.28908e-08, 0, 1.21, 0, 3.751, 0, -1.21, 0, -5.28908e-08, 3.9265, 1.20051, -0.595999)
+size = Vector3(7.6, 1.9, 0.2)
+material = SubResource("StandardMaterial3D_iakye")
+
+[node name="Roof" type="CSGBox3D" parent="stage"]
+transform = Transform3D(2.31193e-15, -4.5012, -5.28908e-08, -5.28908e-08, -1.96754e-07, 1.21, -1.21, 0, -5.28908e-08, -0.62362, 4.80051, -0.595999)
+size = Vector3(7.6, 2.1, 0.2)
+material = SubResource("StandardMaterial3D_iakye")
+
+[node name="wall2" type="CSGBox3D" parent="stage"]
+transform = Transform3D(-1.21, 0, -1.05782e-07, 0, 3.751, 0, 1.05782e-07, 0, -1.21, -0.598, 1.20051, -5.096)
+size = Vector3(7.6, 1.9, 0.2)
+material = SubResource("StandardMaterial3D_iakye")
+
+[node name="wall3" type="CSGBox3D" parent="stage"]
+transform = Transform3D(-1.21, 0, -1.05782e-07, 0, 3.751, 0, 1.05782e-07, 0, -1.21, -0.598, 1.20051, 3.904)
+size = Vector3(7.6, 1.9, 0.2)
+material = SubResource("StandardMaterial3D_iakye")
+
+[node name="Desk" type="CSGBox3D" parent="stage"]
+transform = Transform3D(2.312e-15, -4.5012, -5.28915e-08, -5.28916e-08, -1.96754e-07, 1.21, -1.21, 0, -5.28908e-08, -3.74892, 0.45851, 3.104)
+size = Vector3(1, 0.5, 0.6)
+
+[node name="Bird_Cage_Cube" type="CSGBox3D" parent="stage"]
+transform = Transform3D(2.312e-15, -4.5012, -5.28915e-08, -5.28916e-08, -1.96754e-07, 1.21, -1.21, 0, -5.28908e-08, 2.87614, 1.78951, 2.0755)
+size = Vector3(2.7, 0.4, 2.8)
+
+[node name="Door" type="CSGBox3D" parent="stage"]
+transform = Transform3D(2.312e-15, -4.5012, -5.28915e-08, -5.28916e-08, -1.96754e-07, 1.21, -1.21, 0, -5.28908e-08, -2.54892, 1.36601, -4.996)
+operation = 2
+size = Vector3(1, 0.4, 2.1)
+
+[node name="Bird_Cage_Cylinder1" type="CSGCylinder3D" parent="stage"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.9, 2.9, 1.7, -3.7)
+height = 3.2
+
+[node name="Window1" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 2.9, 0)
+operation = 2
+size = Vector3(1, 2.5, 4.6)
+
+[node name="Window2" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.9, 4)
+operation = 2
+size = Vector3(2.6, 2.5, 1.1)
+
+[node name="Bird_Cage_Cylinder2" type="CSGCylinder3D" parent="stage"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.368, 2.9, 1.7, -1.2)
+height = 3.2
+
+[node name="Computer" type="StaticBody3D" parent="stage" groups=["OpensShop"]]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -3.74892, 1.15851, 3.404)
+script = SubResource("GDScript_6axlm")
+
+[node name="ComputerCollision" type="CollisionShape3D" parent="stage/Computer"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, -1.42109e-14, 3.55271e-15, 1.42109e-14, 1, 0.00999999, 0, 0)
+shape = SubResource("BoxShape3D_1xfw6")
+
+[node name="Computer_Mesh" type="MeshInstance3D" parent="stage/Computer"]
+transform = Transform3D(0.4, 0, -3.55271e-15, 0, 1, -1.42109e-14, 1.42108e-15, 1.42109e-14, 1, 0.00999999, 0, 0)
+mesh = SubResource("BoxMesh_8cscp")
+skeleton = NodePath("../ComputerCollision")
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_oxcy3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(0.080085, 0.579261, -0.811199, -0.613378, 0.670127, 0.417969, 0.785719, 0.464098, 0.408973, -1.2, 6.8, 13)
+shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_xsphm")]
+
+[connection signal="mouse_entered" from="stage/Computer" to="stage/Computer" method="_on_mouse_entered"]

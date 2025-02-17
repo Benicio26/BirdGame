@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://cykn36xyocgxl"]
+
+[ext_resource type="Script" path="res://scripts/computer_shop.gd" id="1_iaxr7"]
+
+[node name="ComputerShop" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_iaxr7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 96.0
+offset_top = 56.0
+offset_right = 1072.0
+offset_bottom = 520.0
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -128.0
+offset_right = 239.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 65
+text = "Avocado Toast"
+
+[node name="CloseShop" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -448.0
+offset_top = -244.0
+offset_right = -352.0
+offset_bottom = -196.0
+text = "Close"
+autowrap_mode = 3
+
+[connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_close_shop_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_button_pressed"]

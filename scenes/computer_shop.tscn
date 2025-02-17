@@ -50,5 +50,5 @@ offset_bottom = -196.0
 text = "Close"
 autowrap_mode = 3
 
-[connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_close_shop_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_close_shop_pressed"]

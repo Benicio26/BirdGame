@@ -1,9 +1,92 @@
-[gd_scene load_steps=2 format=3 uid="uid://cykn36xyocgxl"]
+[gd_scene load_steps=6 format=3 uid="uid://cykn36xyocgxl"]
 
 [ext_resource type="Script" path="res://scripts/computer_shop.gd" id="1_iaxr7"]
 
+[sub_resource type="Animation" id="Animation_wqcik"]
+resource_name = "TransIn"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-550, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0.166667, 0.966667)
+}
+
+[sub_resource type="Animation" id="Animation_ty7bd"]
+resource_name = "TransOut"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.233333, 0.833333)
+}
+
+[sub_resource type="Animation" id="Animation_dkufy"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0vw1"]
+_data = {
+"RESET": SubResource("Animation_dkufy"),
+"TransIn": SubResource("Animation_wqcik"),
+"TransOut": SubResource("Animation_ty7bd")
+}
+
 [node name="ComputerShop" type="Node2D"]
 process_mode = 3
+position = Vector2(0, -600)
 script = ExtResource("1_iaxr7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -24,6 +107,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -40,6 +124,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "Avocado Toast"
+metadata/_edit_use_anchors_ = true
 
 [node name="CloseShop" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -49,6 +134,13 @@ offset_right = -352.0
 offset_bottom = -196.0
 text = "Close"
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+libraries = {
+"": SubResource("AnimationLibrary_n0vw1")
+}
 
 [connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_close_shop_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/CloseShop" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]

@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1xfw6"]
-size = Vector3(0.41, 1, 1)
+size = Vector3(0.3, 1.03, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8cscp"]
 
@@ -100,6 +100,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 2.9, 0)
 operation = 2
 size = Vector3(1, 2.5, 4.6)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0.85, 2.85)
+size = Vector3(0.9, 0.1, 0.3)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="stage/CSGBox3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.12, 0, 0, 0, 0.29, -0.7, 0, 0)
+
 [node name="Window2" type="CSGBox3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.9, 4)
 operation = 2
@@ -114,11 +121,11 @@ transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 
 script = SubResource("GDScript_6axlm")
 
 [node name="ComputerCollision" type="CollisionShape3D" parent="stage/Computer"]
-transform = Transform3D(1, 0, -3.55271e-15, 0, 1, -1.42109e-14, 3.55271e-15, 1.42109e-14, 1, 0.00999999, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 8.35189e-23, 0, 8.35188e-23, 1, 0.01, 0, 0)
 shape = SubResource("BoxShape3D_1xfw6")
 
 [node name="Computer_Mesh" type="MeshInstance3D" parent="stage/Computer"]
-transform = Transform3D(0.4, 0, -3.55271e-15, 0, 1, -1.42109e-14, 1.42108e-15, 1.42109e-14, 1, 0.00999999, 0, 0)
+transform = Transform3D(0.28, 0, -3.55271e-15, 0, 1.04, -1.42109e-14, 9.94756e-16, 1.42109e-14, 1, 0.00999999, 0, 0)
 mesh = SubResource("BoxMesh_8cscp")
 skeleton = NodePath("../ComputerCollision")
 

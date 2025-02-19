@@ -1,7 +1,7 @@
 extends CenterContainer
+# object vars
 @onready var object_detection_ray: RayCast3D = $"../../object_detection_ray"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 
 # crosshair vars
 @export var dot_radius : float = 1.0 

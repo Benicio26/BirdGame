@@ -26,7 +26,7 @@ var air_lerp_speed = 3
 # input vars
 const mouse_sens = 0.15
 const walking_fov : float = 75
-const sprint_fov : float = 100
+const sprint_fov : float = 90
 var direction = Vector3.ZERO
 
 # game states vars

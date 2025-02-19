@@ -35,6 +35,8 @@ var encountered_object = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	print(Global.birds[0]["color"])
+
 
 func _physics_process(delta: float) -> void:
 	#movement states

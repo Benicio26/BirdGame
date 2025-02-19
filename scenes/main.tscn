@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://35flaur14wdf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ip71h"]
-[ext_resource type="Texture2D" uid="uid://4s7g302nq6df" path="res://assets/hdris/Misty Pines HDRI 4K.exr" id="1_x73ba"]
+[ext_resource type="Texture2D" uid="uid://8bo5xarg48c1" path="res://assets/hdris/Solitude 4K.exr" id="2_ww8ng"]
 [ext_resource type="PackedScene" uid="uid://y81aqq14n0ee" path="res://scenes/player.tscn" id="2_xsphm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iakye"]
@@ -26,7 +26,7 @@ size = Vector3(0.41, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_8cscp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l2332"]
-panorama = ExtResource("1_x73ba")
+panorama = ExtResource("2_ww8ng")
 
 [sub_resource type="Sky" id="Sky_gagup"]
 sky_material = SubResource("PanoramaSkyMaterial_l2332")
